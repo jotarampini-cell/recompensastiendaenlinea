@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ RewardShow - Recompensas Exclusivas</title>
+    <meta name="description" content="Descubre 12 formas únicas de premiar tu lealtad en nuestra tienda en línea.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- Global Elements -->
+    <div id="particles-bg" aria-hidden="true"></div>
+    <div id="custom-cursor" aria-hidden="true" class="desktop-only"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" role="navigation" aria-label="Navegación principal">
+        <div class="navbar-brand">
+            <a href="#hero" aria-label="Ir al inicio">✨ RewardShow</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero" aria-label="Sección Inicio" data-nav-target="hero"></a></li>
+            <li><a href="#cards" aria-label="Sección Destapa Cartas" data-nav-target="cards"></a></li>
+            <li><a href="#wheel" aria-label="Sección Ruleta" data-nav-target="wheel"></a></li>
+            <li><a href="#scratch" aria-label="Sección Raspa y Gana" data-nav-target="scratch"></a></li>
+            <li><a href="#unboxing" aria-label="Sección Unboxing" data-nav-target="unboxing"></a></li>
+            <li><a href="#levels" aria-label="Sección Niveles" data-nav-target="levels"></a></li>
+            <li><a href="#puzzle" aria-label="Sección Puzzle" data-nav-target="puzzle"></a></li>
+            <li><a href="#progress" aria-label="Sección Progreso" data-nav-target="progress"></a></li>
+            <li><a href="#stars" aria-label="Sección Constelación" data-nav-target="stars"></a></li>
+            <li><a href="#gumball" aria-label="Sección Premio Diario" data-nav-target="gumball"></a></li>
+            <li><a href="#countdown" aria-label="Sección Oferta Relámpago" data-nav-target="countdown"></a></li>
+            <li><a href="#leaderboard" aria-label="Sección Tabla de Referidos" data-nav-target="leaderboard"></a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Section 1: Hero Carousel -->
+        <section id="hero" class="section-hero">
+            <div class="carousel-container" data-carousel>
+                <div class="carousel-track" data-carousel-track>
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide active" data-slide-index="0">
+                        <div class="slide-content">
+                            <span class="slide-icon" aria-hidden="true">🎁</span>
+                            <h2>Descubre Nuestras Recompensas</h2>
+                            <p>12 formas únicas de premiar tu lealtad</p>
+                            <button class="cta-button">Comenzar Aventura</button>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide" data-slide-index="1">
+                        <div class="slide-content">
+                            <span class="slide-icon" aria-hidden="true">🛍️</span>
+                            <h2>Compra y Gana</h2>
+                            <p>Cada compra te acerca a premios increíbles</p>
+                            <button class="cta-button">Ver Catálogo</button>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="carousel-slide" data-slide-index="2">
+                        <div class="slide-content">
+                            <span class="slide-icon" aria-hidden="true">💎</span>
+                            <h2>Exclusividad VIP</h2>
+                            <p>Beneficios que solo los mejores obtienen</p>
+                            <button class="cta-button">Unirme al Club</button>
+                        </div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="carousel-slide" data-slide-index="3">
+                        <div class="slide-content">
+                            <span class="slide-icon" aria-hidden="true">🎯</span>
+                            <h2>Metas que Inspiran</h2>
+                            <p>Alcanza objetivos, desbloquea recompensas</p>
+                            <button class="cta-button">Ver Mis Metas</button>
+                        </div>
+                    </div>
+                    <!-- Slide 5 -->
+                    <div class="carousel-slide" data-slide-index="4">
+                        <div class="slide-content">
+                            <span class="slide-icon" aria-hidden="true">🚀</span>
+                            <h2>El Futuro de las Recompensas</h2>
+                            <p>Tecnología al servicio de tu experiencia</p>
+                            <button class="cta-button">Explorar</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-arrow prev" aria-label="Diapositiva anterior" data-carousel-prev>←</button>
+                <button class="carousel-arrow next" aria-label="Siguiente diapositiva" data-carousel-next>→</button>
+                <div class="carousel-dots" data-carousel-dots></div>
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path></svg>
+        </div>
+
+        <!-- Section 2: Destapa Cartas -->
+        <section id="cards" class="section-cards">
+            <div class="container">
+                <header class="section-header">
+                    <h2>🃏 Destapa tu Descuento</h2>
+                    <p>Voltea 3 cartas y descubre tu descuento sorpresa</p>
+                </header>
+                <div class="cards-status">
+                    <span data-cards-counter>Intentos restantes: 3</span>
+                    <button class="reset-button" data-cards-reset aria-label="Reiniciar juego de cartas">Reiniciar</button>
+                </div>
+                <div class="cards-grid" data-cards-grid>
+                    <!-- 9 Cards will be generated via JS or statically placed -->
+                    <div class="card" data-card data-discount="5%">
+                        <div class="card-inner">
+                            <div class="card-front" aria-hidden="true">?</div>
+                            <div class="card-back">5%</div>
+                        </div>
+                    </div>
+                    <div class="card" data-card data-discount="10%">
+                        <div class="card-inner">
+                            <div class="card-front" aria-hidden="true">?</div>
+                            <div class="card-back">10%</div>
+                        </div>
+                    </div>
+                    <div class="card" data-card data-discount="15%">
+                        <div class="card-inner">
+                            <div class="card-front" aria-hidden="true">?</div>
+                            <div class="card-back">15%</div>
+                        </div>
+                    </div>
+                    <div class="card" data-card data-discount="20%">
+                        <div class="card-inner">
+                            <div class="card-front" aria-hidden="true">?</div>
+                            <div class="card-back">20%</div>
+                        </div>
+                    </div>
+                    <div class="card" data-card data-discount="25%">
+                        <div class="card-inner">
+                            <div class="card-front" aria-hidden="true">?</div>
+                            <div class="card-back">25%</div>
+                        </div>
+                    </div>
+                    <div class="card" data-card data-discount="30%">
+                        <div class="card-inner">
+                            <div class="card-front" aria-hidden="true">?</div>
+                            <div class="card-back">30%</div>
+                        </div>
+                    </div>
+                    <div class="card" data-card data-discount="40%">
+                        <div class="card-inner">
+                            <div class="card-front" aria-hidden="true">?</div>
+                            <div class="card-back">40%</div>
+                        </div>
+                    </div>
+                    <div class="card" data-card data-discount="50%">
+                        <div class="card-inner">
+                            <div class="card-front" aria-hidden="true">?</div>
+                            <div class="card-back">50%</div>
+                        </div>
+                    </div>
+                    <div class="card" data-card data-discount="¡GRATIS!">
+                        <div class="card-inner">
+                            <div class="card-front" aria-hidden="true">?</div>
+                            <div class="card-back">¡GRATIS!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path></svg>
+        </div>
+
+        <!-- Section 3: Ruleta de Premios -->
+        <section id="wheel" class="section-wheel">
+            <div class="container">
+                <header class="section-header">
+                    <h2>🎰 Gira la Ruleta</h2>
+                    <p>Prueba tu suerte y gana un premio al instante</p>
+                </header>
+                <div class="wheel-container">
+                    <canvas id="wheelCanvas" width="400" height="400" aria-label="Ruleta de la suerte"></canvas>
+                    <button class="spin-button" data-spin-btn>Girar Ruleta</button>
+                    <div class="wheel-result hidden" data-wheel-result aria-live="polite"></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path></svg>
+        </div>
+
+        <!-- Section 4: Raspa y Gana -->
+        <section id="scratch" class="section-scratch">
+            <div class="container">
+                <header class="section-header">
+                    <h2>🎫 Raspa y Gana</h2>
+                    <p>Raspa la tarjeta para revelar tu código de cupón</p>
+                </header>
+                <div class="scratch-container">
+                    <div class="scratch-card-wrapper" data-scratch-wrapper>
+                        <div class="scratch-prize" data-scratch-prize aria-hidden="true">
+                            <span class="prize-title">¡30% de descuento!</span>
+                            <span class="prize-code">Código: REWARD-2026</span>
+                        </div>
+                        <canvas class="scratch-canvas" width="300" height="200" aria-label="Tarjeta para raspar"></canvas>
+                    </div>
+                    <div class="scratch-progress">
+                        <progress value="0" max="100" data-scratch-progress aria-label="Progreso de raspado"></progress>
+                    </div>
+                    <button class="reset-button" data-scratch-new>Nueva Tarjeta</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path></svg>
+        </div>
+
+        <!-- Section 5: Unboxing -->
+        <section id="unboxing" class="section-unboxing">
+            <div class="container">
+                <header class="section-header">
+                    <h2>📦 Abre tu Regalo</h2>
+                    <p>Un regalo especial te espera por tu primera compra</p>
+                </header>
+                <div class="unboxing-container">
+                    <div class="gift-box" data-gift-box role="button" aria-label="Abrir caja de regalo" tabindex="0">
+                        <div class="box-lid"></div>
+                        <div class="box-body"></div>
+                        <div class="box-ribbon"></div>
+                    </div>
+                    <div class="gift-content hidden" data-gift-content aria-live="polite">
+                        <span class="gift-icon" aria-hidden="true">🚚</span>
+                        <h3>¡Envío Gratis en tu primer pedido!</h3>
+                    </div>
+                    <button class="cta-button" data-gift-open>Abrir Regalo</button>
+                    <div class="particle-container" data-gift-particles aria-hidden="true"></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path></svg>
+        </div>
+
+        <!-- Section 6: Scroll Story -->
+        <section id="levels" class="section-levels">
+            <div class="container">
+                <header class="section-header">
+                    <h2>🏔️ Escala de Nivel</h2>
+                    <p>Sube de nivel con cada compra y desbloquea más beneficios</p>
+                </header>
+                <div class="scroll-story-container" data-scroll-story>
+                    <svg class="mountain-path" viewBox="0 0 800 600" aria-hidden="true">
+                        <!-- Background path -->
+                        <path class="path-bg" d="M100,500 Q 300,500 400,350 T 700,100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="8" stroke-linecap="round"/>
+                        <!-- Animated path -->
+                        <path class="path-progress" data-path-progress d="M100,500 Q 300,500 400,350 T 700,100" fill="none" stroke="var(--accent-cyan)" stroke-width="8" stroke-linecap="round"/>
+                    </svg>
+                    
+                    <div class="level-markers">
+                        <div class="level-card" data-level="1">
+                            <span class="level-icon">🥉</span>
+                            <h3>Bronce</h3>
+                            <p>5% descuento en toda la tienda</p>
+                        </div>
+                        <div class="level-card" data-level="2">
+                            <span class="level-icon">🥈</span>
+                            <h3>Plata</h3>
+                            <p>10% descuento + envío gratis</p>
+                        </div>
+                        <div class="level-card" data-level="3">
+                            <span class="level-icon">🥇</span>
+                            <h3>Oro</h3>
+                            <p>20% descuento + acceso anticipado</p>
+                        </div>
+                        <div class="level-card" data-level="4">
+                            <span class="level-icon">💎</span>
+                            <h3>Diamante</h3>
+                            <p>30% descuento + regalos exclusivos + soporte VIP</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path></svg>
+        </div>
+
+        <!-- Section 7: Puzzle -->
+        <section id="puzzle" class="section-puzzle">
+            <div class="container">
+                <header class="section-header">
+                    <h2>🧩 Arma el Puzzle</h2>
+                    <p>Completa el puzzle y desbloquea puntos extra</p>
+                </header>
+                <div class="puzzle-container">
+                    <div class="points-counter" data-puzzle-points aria-live="polite">Puntos: 0</div>
+                    <div class="puzzle-board" data-puzzle-board aria-label="Tablero de rompecabezas">
+                        <!-- 12 drop zones generated via JS -->
+                    </div>
+                    <div class="pieces-tray" data-puzzle-tray aria-label="Piezas del rompecabezas">
+                        <!-- 12 pieces generated via JS -->
+                    </div>
+                    <div class="completion-message hidden" data-puzzle-message aria-live="polite">
+                        <h3>¡Felicidades! Has ganado 500 puntos extra.</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path></svg>
+        </div>
+
+        <!-- Section 8: Progress Bar -->
+        <section id="progress" class="section-progress">
+            <div class="container">
+                <header class="section-header">
+                    <h2>🎯 Tu Camino al Cashback</h2>
+                    <p>Cada compra te acerca a más cashback</p>
+                </header>
+                <div class="progress-container">
+                    <div class="progress-track" aria-hidden="true">
+                        <div class="progress-fill" data-progress-fill style="width: 0%;"></div>
+                    </div>
+                    <div class="milestones" data-progress-milestones>
+                        <button class="milestone" data-target="100" aria-label="Meta $100: 2% cashback">
+                            <span class="amount">$100</span>
+                            <span class="reward tooltip">2% Cashback</span>
+                        </button>
+                        <button class="milestone" data-target="250" aria-label="Meta $250: 5% cashback">
+                            <span class="amount">$250</span>
+                            <span class="reward tooltip">5% Cashback</span>
+                        </button>
+                        <button class="milestone" data-target="500" aria-label="Meta $500: 8% cashback">
+                            <span class="amount">$500</span>
+                            <span class="reward tooltip">8% Cashback</span>
+                        </button>
+                        <button class="milestone" data-target="1000" aria-label="Meta $1000: 12% cashback">
+                            <span class="amount">$1000</span>
+                            <span class="reward tooltip">12% Cashback</span>
+                        </button>
+                        <button class="milestone" data-target="2000" aria-label="Meta $2000: 20% cashback">
+                            <span class="amount">$2000</span>
+                            <span class="reward tooltip">20% Cashback</span>
+                        </button>
+                    </div>
+                    <button class="cta-button mt-4" data-progress-simulate>Simular Compra</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path></svg>
+        </div>
+
+        <!-- Section 9: Star Map -->
+        <section id="stars" class="section-stars">
+            <div class="container">
+                <header class="section-header">
+                    <h2>🌟 Constelación de Beneficios</h2>
+                    <p>Explora el universo de beneficios VIP</p>
+                </header>
+                <div class="star-map-container">
+                    <canvas id="starCanvas" aria-label="Fondo de cielo estrellado"></canvas>
+                    <div class="star-nodes-overlay" data-star-overlay>
+                        <button class="star-node" style="top: 20%; left: 30%;" aria-label="Acceso Anticipado">
+                            <span class="star-icon">⭐</span>
+                            <span class="star-label">Acceso Anticipado</span>
+                            <div class="star-popup">Compra antes que todos</div>
+                        </button>
+                        <button class="star-node" style="top: 50%; left: 15%;" aria-label="Descuentos Exclusivos">
+                            <span class="star-icon">⭐</span>
+                            <span class="star-label">Descuentos Exclusivos</span>
+                            <div class="star-popup">Ofertas solo para ti</div>
+                        </button>
+                        <button class="star-node" style="top: 70%; left: 40%;" aria-label="Envío Express">
+                            <span class="star-icon">⭐</span>
+                            <span class="star-label">Envío Express</span>
+                            <div class="star-popup">Recibe tus compras en 24h</div>
+                        </button>
+                        <button class="star-node" style="top: 30%; left: 60%;" aria-label="Regalo de Cumpleaños">
+                            <span class="star-icon">⭐</span>
+                            <span class="star-label">Regalo de Cumpleaños</span>
+                            <div class="star-popup">Una sorpresa especial en tu día</div>
+                        </button>
+                        <button class="star-node" style="top: 80%; left: 70%;" aria-label="Soporte Prioritario">
+                            <span class="star-icon">⭐</span>
+                            <span class="star-label">Soporte Prioritario</span>
+                            <div class="star-popup">Atención al cliente 24/7 sin esperas</div>
+                        </button>
+                        <button class="star-node" style="top: 15%; left: 80%;" aria-label="Eventos VIP">
+                            <span class="star-icon">⭐</span>
+                            <span class="star-label">Eventos VIP</span>
+                            <div class="star-popup">Invitaciones a eventos exclusivos</div>
+                        </button>
+                        <button class="star-node" style="top: 60%; left: 85%;" aria-label="Productos Limitados">
+                            <span class="star-icon">⭐</span>
+                            <span class="star-label">Productos Limitados</span>
+                            <div class="star-popup">Acceso a colecciones edición limitada</div>
+                        </button>
+                        <button class="star-node" style="top: 45%; left: 45%;" aria-label="Devolución Extendida">
+                            <span class="star-icon">⭐</span>
+                            <span class="star-label">Devolución Extendida</span>
+                            <div class="star-popup">60 días para devolver tus compras</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path></svg>
+        </div>
+
+        <!-- Section 10: Gumball Machine -->
+        <section id="gumball" class="section-gumball">
+            <div class="container">
+                <header class="section-header">
+                    <h2>🎪 Premio Diario</h2>
+                    <p>Tira de la palanca y obtén tu recompensa del día</p>
+                </header>
+                <div class="gumball-container">
+                    <div class="gumball-machine" aria-label="Máquina de chicles">
+                        <div class="glass-dome" data-gumball-dome>
+                            <!-- Balls generated via JS -->
+                        </div>
+                        <div class="machine-base">
+                            <button class="lever" data-gumball-lever aria-label="Jalar palanca"></button>
+                            <div class="chute" data-gumball-chute></div>
+                        </div>
+                    </div>
+                    <div class="gumball-result hidden" data-gumball-result aria-live="polite"></div>
+                    <button class="cta-button mt-4" data-gumball-btn>Jalar palanca</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path></svg>
+        </div>
+
+        <!-- Section 11: Countdown -->
+        <section id="countdown" class="section-countdown">
+            <div class="container">
+                <header class="section-header">
+                    <h2>🔮 Oferta Relámpago</h2>
+                    <p>El tiempo corre... ¡no te pierdas esta oferta!</p>
+                </header>
+                <div class="countdown-container">
+                    <div class="flip-clock" data-countdown-clock aria-label="Cuenta regresiva">
+                        <div class="flip-unit">
+                            <span class="unit-label">Horas</span>
+                            <div class="flip-card" data-time="hours">
+                                <div class="flip-top">00</div>
+                                <div class="flip-bottom">00</div>
+                            </div>
+                        </div>
+                        <div class="flip-unit">
+                            <span class="unit-label">Minutos</span>
+                            <div class="flip-card" data-time="minutes">
+                                <div class="flip-top">00</div>
+                                <div class="flip-bottom">00</div>
+                            </div>
+                        </div>
+                        <div class="flip-unit">
+                            <span class="unit-label">Segundos</span>
+                            <div class="flip-card" data-time="seconds">
+                                <div class="flip-top">00</div>
+                                <div class="flip-bottom">00</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="offer-card blurred" data-countdown-offer aria-hidden="true">
+                        <h3>Descuento Sorpresa</h3>
+                        <p>Solo por las próximas horas</p>
+                    </div>
+                    <button class="cta-button mt-4" data-countdown-reveal>Revelar Ahora</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path></svg>
+        </div>
+
+        <!-- Section 12: Leaderboard -->
+        <section id="leaderboard" class="section-leaderboard">
+            <div class="container">
+                <header class="section-header">
+                    <h2>🏆 Tabla de Referidos</h2>
+                    <p>Refiere amigos y gana bonos increíbles</p>
+                </header>
+                
+                <div class="leaderboard-container">
+                    <div class="podium" aria-label="Podio de ganadores">
+                        <div class="podium-place place-2">
+                            <div class="podium-avatar">👨</div>
+                            <div class="podium-name">Carlos M.</div>
+                            <div class="podium-bar">2</div>
+                        </div>
+                        <div class="podium-place place-1">
+                            <div class="podium-avatar">👩</div>
+                            <div class="podium-name">Ana G.</div>
+                            <div class="podium-bar">1</div>
+                        </div>
+                        <div class="podium-place place-3">
+                            <div class="podium-avatar">👱‍♀️</div>
+                            <div class="podium-name">María L.</div>
+                            <div class="podium-bar">3</div>
+                        </div>
+                    </div>
+                    
+                    <div class="table-wrapper">
+                        <table class="leaderboard-table" aria-label="Tabla de posiciones de referidos">
+                            <thead>
+                                <tr>
+                                    <th>Posición</th>
+                                    <th>Usuario</th>
+                                    <th>Referidos</th>
+                                    <th>Bono Obtenido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td><span aria-hidden="true">👩</span> Ana G.</td><td>45</td><td>$450</td></tr>
+                                <tr><td>2</td><td><span aria-hidden="true">👨</span> Carlos M.</td><td>38</td><td>$380</td></tr>
+                                <tr><td>3</td><td><span aria-hidden="true">👱‍♀️</span> María L.</td><td>32</td><td>$320</td></tr>
+                                <tr><td>4</td><td><span aria-hidden="true">👨‍𱇒</span> Pedro R.</td><td>28</td><td>$280</td></tr>
+                                <tr><td>5</td><td><span aria-hidden="true">👩‍𱇒</span> Sofía T.</td><td>25</td><td>$250</td></tr>
+                                <tr><td>6</td><td><span aria-hidden="true">👦</span> Diego H.</td><td>20</td><td>$200</td></tr>
+                                <tr><td>7</td><td><span aria-hidden="true">👧</span> Laura P.</td><td>18</td><td>$180</td></tr>
+                                <tr><td>8</td><td><span aria-hidden="true">👨‍🦳</span> Andrés V.</td><td>15</td><td>$150</td></tr>
+                                <tr><td>9</td><td><span aria-hidden="true">👩‍🦳</span> Carmen S.</td><td>12</td><td>$120</td></tr>
+                                <tr><td>10</td><td><span aria-hidden="true">🧔</span> Roberto F.</td><td>10</td><td>$100</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="leaderboard-actions mt-4 text-center">
+                        <div class="bonus-tiers mb-4">
+                            <span class="badge">1-5 referidos: $10 c/u</span>
+                            <span class="badge">6-10 referidos: $15 c/u</span>
+                            <span class="badge">11+ referidos: $20 c/u</span>
+                        </div>
+                        <button class="cta-button">Invitar Amigos</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container text-center">
+            <h2 class="footer-cta-title">¿Listo para ganar?</h2>
+            <p>Únete a nuestro programa de recompensas</p>
+            <form class="footer-form" aria-label="Formulario de suscripción">
+                <input type="email" placeholder="Ingresa tu correo electrónico" required aria-label="Correo electrónico">
+                <button type="submit" class="cta-button">Unirme Ahora</button>
+            </form>
+            <div class="social-links mt-4">
+                <a href="#" aria-label="Facebook"><span aria-hidden="true">📱</span></a>
+                <a href="#" aria-label="Instagram"><span aria-hidden="true">📸</span></a>
+                <a href="#" aria-label="Twitter"><span aria-hidden="true">🐦</span></a>
+            </div>
+            <p class="copyright mt-4">&copy; 2026 RewardShow. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- GSAP Libraries (CDN) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Flip.min.js"></script>
+
+    <!-- JS Modules -->
+    <script src="js/carousel.js"></script>
+    <script src="js/card-flip.js"></script>
+    <script src="js/spin-wheel.js"></script>
+    <script src="js/scratch-card.js"></script>
+    <script src="js/gift-box.js"></script>
+    <script src="js/scroll-story.js"></script>
+    <script src="js/puzzle.js"></script>
+    <script src="js/progress-bar.js"></script>
+    <script src="js/star-map.js"></script>
+    <script src="js/gumball.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/leaderboard.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
