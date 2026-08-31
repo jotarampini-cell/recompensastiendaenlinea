@@ -231,12 +231,12 @@
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
         nav.classList.add('scrolled');
-        nav.style.background = 'rgba(29, 29, 31, 0.85)';
+        nav.style.background = 'rgba(0, 0, 0, 0.9)';
         nav.style.borderBottom = '1px solid rgba(255,255,255,0.15)';
       } else {
         nav.classList.remove('scrolled');
-        nav.style.background = 'rgba(29, 29, 31, 0.72)';
-        nav.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+        nav.style.background = 'rgba(0, 0, 0, 0.7)';
+        nav.style.borderBottom = '1px solid rgba(255,255,255,0.0)';
       }
     }, { passive: true });
     
