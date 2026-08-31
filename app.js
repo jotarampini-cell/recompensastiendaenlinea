@@ -272,77 +272,29 @@
       for (let i = 0; i < 9; i++) {
         const card = document.createElement('div');
         card.className = 'flip-card';
-        // Estilos básicos de la tarjeta
-        Object.assign(card.style, {
-          width: '100%',
-          aspectRatio: '3/4',
-          perspective: '1000px',
-          cursor: 'pointer'
-        });
-
-        const inner = document.createElement('div');
-        inner.className = 'flip-card-inner';
-        Object.assign(inner.style, {
-          position: 'relative',
-          width: '100%',
-          height: '100%',
-          textAlign: 'center',
-          transition: 'transform 0.6s',
-          transformStyle: 'preserve-3d'
-        });
 
         const front = document.createElement('div');
-        front.className = 'flip-card-front';
-        Object.assign(front.style, {
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          backfaceVisibility: 'hidden',
-          backgroundColor: '#0071e3',
-          color: 'white',
-          borderRadius: '16px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontSize: '24px',
-          fontWeight: 'bold',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-        });
+        front.className = 'flip-face flip-front';
         front.textContent = '?';
 
         const back = document.createElement('div');
-        back.className = 'flip-card-back';
+        back.className = 'flip-face flip-back';
+        
         const val = shuffledDiscounts[i];
         const valText = typeof val === 'number' ? `${val}%` : val;
-        Object.assign(back.style, {
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          backfaceVisibility: 'hidden',
-          backgroundColor: '#fff',
-          color: '#1d1d1f',
-          borderRadius: '16px',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontSize: '32px',
-          fontWeight: 'bold',
-          transform: 'rotateY(180deg)',
-          border: '2px solid #0071e3',
-          boxShadow: '0 8px 24px rgba(0,0,0,0.12)'
-        });
-        back.innerHTML = `<span style="font-size:14px; color:#86868b; font-weight:normal; margin-bottom:4px;">Ganaste</span><span>${valText}</span>`;
+        
+        back.innerHTML = `
+          <div class="flip-back-value">${valText}</div>
+          <div style="font-size: 14px; text-align: center;">de descuento</div>
+        `;
 
-        inner.appendChild(front);
-        inner.appendChild(back);
-        card.appendChild(inner);
+        card.appendChild(front);
+        card.appendChild(back);
 
         // Interacción
         card.addEventListener('click', () => {
           if (flipsLeft > 0 && !card.classList.contains('flipped')) {
             card.classList.add('flipped');
-            inner.style.transform = 'rotateY(180deg)';
             flipsLeft--;
             if (counterEl) counterEl.textContent = flipsLeft;
             
@@ -369,15 +321,6 @@
         cardGrid.appendChild(card);
         cards.push(card);
       }
-      
-      // Grid css si no está definido
-      Object.assign(cardGrid.style, {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: '16px',
-        maxWidth: '400px',
-        margin: '0 auto'
-      });
     }
 
     initCards();
