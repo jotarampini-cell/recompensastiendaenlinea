@@ -426,11 +426,8 @@
 
     if (spinBtn) {
       spinBtn.addEventListener('click', () => {
-        if (AppState.user.dailySpinUsed) {
-          showToast('Ya usaste tu giro de hoy.');
-          return;
-        }
-
+        if (spinBtn.disabled) return;
+        
         spinBtn.disabled = true;
         spinBtn.style.opacity = '0.5';
 
@@ -438,13 +435,9 @@
         const winningIndex = Math.floor(Math.random() * numSegments);
         const segmentAngle = 360 / numSegments;
         
-        // Calcular rotación objetivo para que el ganador quede arriba (0 grados o 270 según dibujo)
-        // El segmento i empieza en i*segmentAngle. El centro del segmento es i*segmentAngle + segmentAngle/2
-        // El indicador está arriba (270 grados en canvas).
         const offset = 90; // Para compensar el origen del canvas (0 está a la derecha)
         const targetAngle = 360 - (winningIndex * segmentAngle + segmentAngle / 2) - offset;
         
-        // Añadir vueltas extra (5-8 vueltas)
         const extraSpins = (5 + Math.floor(Math.random() * 4)) * 360;
         const totalRotation = currentRotation + extraSpins + (targetAngle - (currentRotation % 360) + 360) % 360;
 
@@ -463,13 +456,19 @@
               }
               showToast(`Ganaste ${prize}`);
               
-              // Añadir recompensa
               if (prize.includes('Puntos')) {
                 AppState.user.points += 100;
               } else {
                 AppState.user.coupons.push({ code: 'RULETA-WIN', discount: prize, active: true });
               }
               updateGlobalStatsUI();
+              
+              // Reactivate for demo purposes
+              setTimeout(() => {
+                spinBtn.disabled = false;
+                spinBtn.style.opacity = '1';
+                spinBtn.textContent = 'Girar de Nuevo (Demo)';
+              }, 2000);
             }
           });
         }
