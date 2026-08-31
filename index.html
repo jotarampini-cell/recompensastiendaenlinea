@@ -9,8 +9,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
-  
-  <nav class="navbar"></nav>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 0;">
+      <a href="#" style="font-size: 20px; font-weight: 700; color: inherit; text-decoration: none;">RewardShow</a>
+      <div class="nav-links" style="display: flex; gap: 24px;">
+        <a href="#dashboard" style="color: inherit; text-decoration: none; font-size: 14px;">Dashboard</a>
+        <a href="#ruleta" style="color: inherit; text-decoration: none; font-size: 14px;">Ruleta</a>
+        <a href="#cashback" style="color: inherit; text-decoration: none; font-size: 14px;">Cashback</a>
+      </div>
+    </div>
+  </nav>
 
   <!-- SECTION 1: HERO -->
   <section class="section section-dark hero-section">
@@ -21,7 +30,7 @@
       
       <div class="button-group">
         <a href="#dashboard" class="btn btn-primary">Explorar Programa</a>
-        <a href="#demo" class="btn btn-link">Ver Demo &rarr;</a>
+        <a href="#ruleta" class="btn btn-link">Ver Demo &rarr;</a>
       </div>
     </div>
     <div class="scroll-indicator"></div>
@@ -94,70 +103,7 @@
       <p class="fade-up" style="color: var(--text-muted); margin-top: 20px;" id="flip-counter">Oportunidades restantes: 3</p>
 
       <div class="flip-grid" id="card-flip-grid">
-        <!-- 9 Cards generated structurally -->
-        <div class="flip-card fade-up" data-card-index="1" data-discount="10%">
-          <div class="flip-face flip-front">?</div>
-          <div class="flip-face flip-back">
-            <div class="flip-back-value">10%</div>
-            <div>de descuento</div>
-          </div>
-        </div>
-        <div class="flip-card fade-up" data-card-index="2" data-discount="15%">
-          <div class="flip-face flip-front">?</div>
-          <div class="flip-face flip-back">
-            <div class="flip-back-value">15%</div>
-            <div>de descuento</div>
-          </div>
-        </div>
-        <div class="flip-card fade-up" data-card-index="3" data-discount="5%">
-          <div class="flip-face flip-front">?</div>
-          <div class="flip-face flip-back">
-            <div class="flip-back-value">5%</div>
-            <div>de descuento</div>
-          </div>
-        </div>
-        <div class="flip-card fade-up" data-card-index="4" data-discount="20%">
-          <div class="flip-face flip-front">?</div>
-          <div class="flip-face flip-back">
-            <div class="flip-back-value">20%</div>
-            <div>de descuento</div>
-          </div>
-        </div>
-        <div class="flip-card fade-up" data-card-index="5" data-discount="Envío">
-          <div class="flip-face flip-front">?</div>
-          <div class="flip-face flip-back">
-            <div class="flip-back-value">Envío</div>
-            <div>Gratis</div>
-          </div>
-        </div>
-        <div class="flip-card fade-up" data-card-index="6" data-discount="10%">
-          <div class="flip-face flip-front">?</div>
-          <div class="flip-face flip-back">
-            <div class="flip-back-value">10%</div>
-            <div>de descuento</div>
-          </div>
-        </div>
-        <div class="flip-card fade-up" data-card-index="7" data-discount="5%">
-          <div class="flip-face flip-front">?</div>
-          <div class="flip-face flip-back">
-            <div class="flip-back-value">5%</div>
-            <div>de descuento</div>
-          </div>
-        </div>
-        <div class="flip-card fade-up" data-card-index="8" data-discount="15%">
-          <div class="flip-face flip-front">?</div>
-          <div class="flip-face flip-back">
-            <div class="flip-back-value">15%</div>
-            <div>de descuento</div>
-          </div>
-        </div>
-        <div class="flip-card fade-up" data-card-index="9" data-discount="25%">
-          <div class="flip-face flip-front">?</div>
-          <div class="flip-face flip-back">
-            <div class="flip-back-value">25%</div>
-            <div>de descuento</div>
-          </div>
-        </div>
+        <!-- 9 Cards generated dynamically by app.js -->
       </div>
       
       <button id="flip-reset-btn" class="btn btn-link fade-up" style="margin-top: 40px;">Reiniciar Juego</button>
@@ -482,31 +428,8 @@
                 <th>Bono</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>4</td>
-                <td>🧔🏻‍♂️ Luis M.</td>
-                <td>28</td>
-                <td>$280</td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>👩🏽‍. Sofia R.</td>
-                <td>25</td>
-                <td>$250</td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td>👨🏼‍🦱 Diego T.</td>
-                <td>22</td>
-                <td>$220</td>
-              </tr>
-              <tr>
-                <td>7</td>
-                <td>🧑🏻‍🦰 Elena V.</td>
-                <td>19</td>
-                <td>$190</td>
-              </tr>
+            <tbody id="leaderboard-tbody">
+              <!-- Rows generated dynamically by app.js -->
             </tbody>
           </table>
         </div>

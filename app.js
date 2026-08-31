@@ -86,43 +86,21 @@
   // Sistema de Notificaciones Toast
   function showToast(message, duration = 3000) {
     const toast = document.createElement('div');
-    toast.className = 'custom-toast';
+    toast.className = 'toast';
     toast.textContent = message;
-    
-    // Estilos básicos en caso de no existir CSS
-    Object.assign(toast.style, {
-      position: 'fixed',
-      top: isMobile ? 'auto' : '24px',
-      bottom: isMobile ? '24px' : 'auto',
-      right: isMobile ? '50%' : '24px',
-      transform: isMobile ? 'translateX(50%) translateY(20px)' : 'translateX(20px)',
-      opacity: '0',
-      backgroundColor: '#1d1d1f',
-      color: '#fff',
-      padding: '16px 24px',
-      borderRadius: '12px',
-      fontFamily: 'system-ui, -apple-system, sans-serif',
-      fontSize: '15px',
-      fontWeight: '500',
-      boxShadow: '0 10px 30px rgba(0,0,0,0.15)',
-      zIndex: '9999',
-      transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-      pointerEvents: 'none',
-      whiteSpace: 'nowrap'
-    });
 
     document.body.appendChild(toast);
 
     // Animar entrada
     requestAnimationFrame(() => {
-      toast.style.opacity = '1';
-      toast.style.transform = isMobile ? 'translateX(50%) translateY(0)' : 'translateX(0)';
+      requestAnimationFrame(() => {
+        toast.classList.add('visible');
+      });
     });
 
     // Remover
     setTimeout(() => {
-      toast.style.opacity = '0';
-      toast.style.transform = isMobile ? 'translateX(50%) translateY(20px)' : 'translateX(20px)';
+      toast.classList.remove('visible');
       setTimeout(() => toast.remove(), 400);
     }, duration);
   }
@@ -183,7 +161,7 @@
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
     gsap.registerPlugin(ScrollTrigger);
 
-    const elementsToAnimate = document.querySelectorAll('.section-header, .stat-card, .card, tr, .benefit-card, .level-card, .prize-card');
+    const elementsToAnimate = document.querySelectorAll('.fade-up, .stat-card, tr, .benefit-card, .level-card, .day-card');
     
     elementsToAnimate.forEach((el, index) => {
       // Estilos iniciales si no están definidos
@@ -735,11 +713,15 @@
         // Agitar
         tl.to(giftBox, { x: 3, duration: 0.05, yoyo: true, repeat: 7 })
           .to(giftBox, { x: 0, duration: 0.05 })
-          // Volar tapa (simulado subiendo todo el elemento y desvaneciendo)
-          .to(giftBox, { y: -60, rotationZ: -15, opacity: 0, duration: 0.6, ease: 'power2.out' })
-          // Mostrar resultado
+          // Volar tapa
+          .add(() => {
+            giftBox.classList.add('opened');
+          })
+          // Esperar y Mostrar resultado
+          .to({}, { duration: 0.6 })
           .add(() => {
             if (resultEl) {
+              resultEl.style.display = 'block';
               resultEl.innerHTML = `<div style="font-size:18px; color:#1d1d1f; font-weight:500;">🎉 ¡Envío Gratis en tu primer pedido!<br><span style="color:#86868b; font-size:14px;">Código: BIENVENIDA2026</span></div>`;
               gsap.fromTo(resultEl, 
                 { opacity: 0, y: 20 },
@@ -939,7 +921,7 @@
         
         renderCashback();
         updateGlobalStatsUI();
-        showToast(`Compra de $${amount} simulada. Cashback actual: ${AppState.user.cashbackRate}%`);
+        showToast(`Compra de $${amount.toLocaleString('en-US', {minimumFractionDigits: 2})} simulada. Cashback actual: ${AppState.user.cashbackRate}%`);
       });
     }
   }
@@ -1216,9 +1198,10 @@
     // 2 horas y 30 minutos desde ahora
     let timeRemaining = 2 * 3600 + 30 * 60; 
 
+    let timerInterval;
     const updateTimer = () => {
       if (timeRemaining <= 0) {
-        clearInterval(timerInterval);
+        if (timerInterval) clearInterval(timerInterval);
         if (revealBtn && !revealBtn.disabled) revealBtn.click();
         return;
       }
@@ -1238,7 +1221,7 @@
       }
     };
 
-    const timerInterval = setInterval(updateTimer, 1000);
+    timerInterval = setInterval(updateTimer, 1000);
     updateTimer(); // Initial call
 
     if (revealBtn && offerCard) {
