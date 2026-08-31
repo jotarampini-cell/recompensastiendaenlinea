@@ -475,6 +475,7 @@
         const totalRotation = currentRotation + extraSpins + (targetAngle - (currentRotation % 360) + 360) % 360;
 
         if (typeof gsap !== 'undefined') {
+          gsap.set(wheelContainer, { rotation: currentRotation });
           gsap.to(wheelContainer, {
             rotation: totalRotation,
             duration: 4,
@@ -485,6 +486,7 @@
               const prize = prizes[winningIndex].label;
               
               if (resultEl) {
+                resultEl.style.display = 'block';
                 resultEl.innerHTML = `<div style="padding:16px; background:#fbfbfd; border-radius:12px; margin-top:16px; font-weight:bold; color:#0071e3;">🎉 ¡Ganaste: ${prize}!</div>`;
               }
               showToast(`Ganaste ${prize}`);

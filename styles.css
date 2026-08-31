@@ -635,13 +635,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cb-markers {
-  display: flex;
-  justify-content: space-between;
   position: absolute;
-  top: -10px;
-  left: 0;
-  width: 100%;
-  padding: 0 20px;
+  top: -4px;
+  left: 40px;
+  right: 40px;
+  width: auto;
 }
 
 .cb-marker {
