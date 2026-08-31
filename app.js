@@ -141,6 +141,39 @@
     window.requestAnimationFrame(step);
   }
 
+  function createConfetti(el) {
+    const rect = el.getBoundingClientRect();
+    const colors = ['#0071e3', '#ec4899', '#34c759', '#fada15'];
+    for(let i=0; i<40; i++) {
+      const p = document.createElement('div');
+      p.style.position = 'fixed';
+      p.style.left = (rect.left + rect.width/2) + 'px';
+      p.style.top = (rect.top + rect.height/2) + 'px';
+      p.style.width = '8px';
+      p.style.height = '8px';
+      p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      p.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+      p.style.zIndex = '9999';
+      p.style.pointerEvents = 'none';
+      document.body.appendChild(p);
+
+      const angle = Math.random() * Math.PI * 2;
+      const vel = 50 + Math.random() * 200;
+      
+      if (typeof gsap !== 'undefined') {
+        gsap.to(p, {
+          x: Math.cos(angle) * vel,
+          y: Math.sin(angle) * vel + 150, // gravity effect
+          rotation: Math.random() * 360,
+          opacity: 0,
+          duration: 1 + Math.random(),
+          ease: 'power1.out',
+          onComplete: () => p.remove()
+        });
+      }
+    }
+  }
+
   // Actualizar estadísticas globales en la interfaz
   function updateGlobalStatsUI() {
     const pointsEl = document.querySelector('#dashboard-points');
@@ -652,22 +685,24 @@
       if (typeof gsap !== 'undefined') {
         const tl = gsap.timeline();
         
-        // Agitar
-        tl.to(giftBox, { x: 3, duration: 0.05, yoyo: true, repeat: 7 })
-          .to(giftBox, { x: 0, duration: 0.05 })
+        // Agitar y saltar
+        tl.to(giftBox, { scale: 1.1, duration: 0.2 })
+          .to(giftBox, { x: 4, duration: 0.05, yoyo: true, repeat: 7 })
+          .to(giftBox, { x: 0, scale: 1, duration: 0.1 })
           // Volar tapa
           .add(() => {
             giftBox.classList.add('opened');
+            createConfetti(giftBox);
           })
           // Esperar y Mostrar resultado
-          .to({}, { duration: 0.6 })
+          .to({}, { duration: 0.4 })
           .add(() => {
             if (resultEl) {
               resultEl.style.display = 'block';
-              resultEl.innerHTML = `<div style="font-size:18px; color:#1d1d1f; font-weight:500;">🎉 ¡Envío Gratis en tu primer pedido!<br><span style="color:#86868b; font-size:14px;">Código: BIENVENIDA2026</span></div>`;
+              resultEl.innerHTML = `<div style="font-size:24px; color:#1d1d1f; font-weight:700;">🎉 ¡Envío Gratis!<br><span style="color:#86868b; font-size:16px; font-weight:500;">Código: BIENVENIDA2026</span></div>`;
               gsap.fromTo(resultEl, 
-                { opacity: 0, y: 20 },
-                { opacity: 1, y: 0, duration: 0.5 }
+                { opacity: 0, scale: 0.5, y: 40 },
+                { opacity: 1, scale: 1, y: 0, duration: 0.8, ease: 'back.out(1.7)' }
               );
             }
             showToast('¡Regalo abierto!');
@@ -733,13 +768,22 @@
       });
 
       card.innerHTML = `
+        <div style="font-size: 12px; font-weight: bold; color: ${idx === currentLevelIdx ? '#0071e3' : (idx < currentLevelIdx ? '#34c759' : '#86868b')}; margin-bottom: 8px; text-transform: uppercase;">
+          ${idx < currentLevelIdx ? '✓ Completado' : (idx === currentLevelIdx ? '★ Tu Nivel' : '🔒 Bloqueado')}
+        </div>
         <div style="font-size: 32px; margin-bottom: 12px;">${level.icon}</div>
         <h4 style="margin: 0 0 8px 0; font-size: 19px; color: #1d1d1f;">${level.name}</h4>
         <div style="font-size: 14px; color: #86868b; margin-bottom: 16px;">${idx === AppState.levels.length - 1 ? '3000+ pts' : `${level.minPoints}-${level.maxPoints} pts`}</div>
         <div style="font-size: 13px; color: #424245; text-align: left;">
-          <ul style="padding-left: 16px; margin: 0;">
-            ${level.benefits.map(b => `<li>${b}</li>`).join('')}
-          </ul>
+          ${idx <= currentLevelIdx ? `
+            <ul style="padding-left: 16px; margin: 0;">
+              ${level.benefits.map(b => `<li>${b}</li>`).join('')}
+            </ul>
+          ` : `
+            <div style="text-align: center; padding: 12px; background: rgba(0,0,0,0.03); border-radius: 8px; color: #86868b;">
+              Beneficios bloqueados
+            </div>
+          `}
         </div>
       `;
       container.appendChild(card);
@@ -1197,115 +1241,26 @@
     }
   }
 
-  // 13. Tabla de Posiciones (Leaderboard)
-  function initLeaderboard() {
-    const podiumContainer = document.querySelector('#podium-container');
-    const tableBody = document.querySelector('#leaderboard-table tbody');
+  // 13. Referidos (Invita y Gana)
+  function initReferrals() {
     const inviteBtn = document.querySelector('#invite-friend-btn');
+    const inputLink = document.querySelector('#referral-link-input');
     
-    if (!podiumContainer && !tableBody) return;
-
-    const data = AppState.leaderboard;
-
-    // Podio (Top 3)
-    if (podiumContainer) {
-      podiumContainer.innerHTML = '';
-      Object.assign(podiumContainer.style, {
-        display: 'flex',
-        alignItems: 'flex-end',
-        justifyContent: 'center',
-        gap: '8px',
-        height: '250px',
-        paddingTop: '40px'
-      });
-
-      // Orden: 2, 1, 3
-      const podiumOrder = [
-        { rank: 2, data: data[1], height: '60%', color: '#d2d2d7' }, // Plata
-        { rank: 1, data: data[0], height: '85%', color: '#f59e0b' }, // Oro
-        { rank: 3, data: data[2], height: '40%', color: '#b45309' }  // Bronce
-      ];
-
-      podiumOrder.forEach(item => {
-        const bar = document.createElement('div');
-        Object.assign(bar.style, {
-          width: '30%',
-          maxWidth: '100px',
-          height: '0%', // Inicial para animación
-          backgroundColor: '#fbfbfd',
-          borderTopLeftRadius: '12px',
-          borderTopRightRadius: '12px',
-          position: 'relative',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          border: `2px solid ${item.color}`,
-          borderBottom: 'none'
-        });
-
-        bar.innerHTML = `
-          <div style="position: absolute; top: -50px; text-align: center; width: 100%;">
-            <div style="font-size: 28px; margin-bottom: 4px;">${item.data.avatar}</div>
-            <div style="font-size: 12px; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 4px;">${item.data.name}</div>
-          </div>
-          <div style="margin-top: 16px; font-size: 24px; font-weight: bold; color: ${item.color};">${item.rank}</div>
-          <div style="margin-top: auto; padding-bottom: 12px; font-size: 14px; color: #86868b;">
-            <span class="ref-count" data-val="${item.data.referrals}">0</span> ref
-          </div>
-        `;
-
-        podiumContainer.appendChild(bar);
-
-        // Animar barra
-        if (typeof ScrollTrigger !== 'undefined') {
-          ScrollTrigger.create({
-            trigger: podiumContainer,
-            start: 'top 80%',
-            onEnter: () => {
-              gsap.to(bar, { height: item.height, duration: 1.2, ease: 'power3.out' });
-              const countEl = bar.querySelector('.ref-count');
-              animateCounter(countEl, item.data.referrals, 1500);
-            },
-            once: true
-          });
-        } else {
-          bar.style.height = item.height;
-        }
-      });
-    }
-
-    // Tabla
-    if (tableBody) {
-      tableBody.innerHTML = '';
-      data.forEach((user, idx) => {
-        const tr = document.createElement('tr');
-        // Tu usuario simulado está en posición 4 para el ejemplo
-        const isMe = idx === 3; 
-        
-        if (isMe) {
-          tr.style.backgroundColor = '#f0f8ff';
-          user.name = AppState.user.name + ' (Tú)';
-          user.avatar = '👤';
-          user.referrals = AppState.user.referrals;
-          user.bonus = user.referrals * 10;
-        }
-
-        tr.innerHTML = `
-          <td style="padding: 12px 16px; border-bottom: 1px solid #f5f5f7; font-weight: 500;">${idx + 1}</td>
-          <td style="padding: 12px 16px; border-bottom: 1px solid #f5f5f7; display: flex; align-items: center; gap: 12px;">
-            <span style="font-size: 20px;">${user.avatar}</span>
-            <span>${user.name}</span>
-          </td>
-          <td style="padding: 12px 16px; border-bottom: 1px solid #f5f5f7; text-align: right;">${user.referrals}</td>
-          <td style="padding: 12px 16px; border-bottom: 1px solid #f5f5f7; text-align: right; color: #0071e3; font-weight: 500;">+${user.bonus} pts</td>
-        `;
-        tableBody.appendChild(tr);
-      });
-    }
-
-    if (inviteBtn) {
+    if (inviteBtn && inputLink) {
       inviteBtn.addEventListener('click', () => {
-        showToast('Link copiado: rewardshow.com/ref/maria-g', 4000);
+        inputLink.select();
+        document.execCommand('copy');
+        
+        const originalText = inviteBtn.textContent;
+        inviteBtn.textContent = '¡Enlace Copiado! ✓';
+        inviteBtn.style.backgroundColor = '#34c759';
+        
+        showToast('Enlace de referido copiado al portapapeles');
+        
+        setTimeout(() => {
+          inviteBtn.textContent = originalText;
+          inviteBtn.style.backgroundColor = '';
+        }, 3000);
       });
     }
   }
@@ -1315,46 +1270,11 @@
     const cards = document.querySelectorAll('.benefit-card');
     
     cards.forEach(card => {
-      // Estilos base por si acaso
-      card.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s';
-      
-      const content = card.querySelector('.benefit-desc');
-      if (content) {
-        content.style.maxHeight = isMobile ? '0' : 'none';
-        content.style.overflow = 'hidden';
-        content.style.opacity = isMobile ? '0' : '1';
-        content.style.transition = 'all 0.4s ease';
-      }
-
-      if (isMobile) {
-        card.addEventListener('click', () => {
-          const isExpanded = card.classList.contains('expanded');
-          
-          // Cerrar otros
-          cards.forEach(c => {
-            c.classList.remove('expanded');
-            c.style.transform = 'scale(1)';
-            const desc = c.querySelector('.benefit-desc');
-            if (desc) {
-              desc.style.maxHeight = '0';
-              desc.style.opacity = '0';
-            }
-          });
-
-          if (!isExpanded) {
-            card.classList.add('expanded');
-            card.style.transform = 'scale(1.02)';
-            if (content) {
-              content.style.maxHeight = '100px';
-              content.style.opacity = '1';
-              content.style.marginTop = '12px';
-            }
-          }
-        });
-      } else {
+      // Hover suave para desktop
+      if (!isMobile) {
         card.addEventListener('mouseenter', () => {
           card.style.transform = 'translateY(-8px)';
-          card.style.boxShadow = '0 20px 40px rgba(0,0,0,0.08)';
+          card.style.boxShadow = '0 20px 40px rgba(0,0,0,0.4)';
         });
         card.addEventListener('mouseleave', () => {
           card.style.transform = 'translateY(0)';
@@ -1381,7 +1301,7 @@
     initPuzzle();
     initDailyReward();
     initCountdown();
-    initLeaderboard();
+    initReferrals();
     initBenefitsGrid();
   });
 

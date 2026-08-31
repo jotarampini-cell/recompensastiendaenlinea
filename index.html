@@ -393,55 +393,35 @@
   <!-- SECTION 12: LEADERBOARD -->
   <section class="section section-light">
     <div class="container">
-      <h2 class="title-section fade-up">Programa de Referidos</h2>
-      <p class="subtitle fade-up">Invita amigos y gana bonos por cada referido.</p>
+      <h2 class="title-section fade-up">Invita y Gana</h2>
+      <p class="subtitle fade-up">Comparte tu enlace y ambos recibirán beneficios.</p>
 
-      <div class="leaderboard-container fade-up">
-        <div class="podium" id="podium-container">
-          <div class="podium-place place-2">
-            <div class="podium-avatar">👨🏽</div>
-            <div style="font-weight: 600; margin-bottom: 4px;">Carlos</div>
-            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">38 ref.</div>
-            <div class="podium-bar">2</div>
-          </div>
-          <div class="podium-place place-1">
-            <div class="podium-avatar">👩🏻</div>
-            <div style="font-weight: 600; margin-bottom: 4px;">Ana G.</div>
-            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">47 ref.</div>
-            <div class="podium-bar">1</div>
-          </div>
-          <div class="podium-place place-3">
-            <div class="podium-avatar">👱🏼‍♀️</div>
-            <div style="font-weight: 600; margin-bottom: 4px;">María</div>
-            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">35 ref.</div>
-            <div class="podium-bar">3</div>
-          </div>
+      <div class="referral-card fade-up" style="max-width: 600px; margin: 40px auto; background: #fff; border-radius: 24px; padding: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); text-align: center; border: 1px solid var(--border-light);">
+        <div style="font-size: 64px; margin-bottom: 24px;">🤝</div>
+        <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 12px; color: #1d1d1f;">Regala $150, Recibe $150</h3>
+        <p style="font-size: 17px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.5;">
+          Por cada amigo que compre usando tu enlace, te daremos $150 en crédito para tu próxima compra, y ellos también recibirán $150 de descuento.
+        </p>
+        
+        <div style="display: flex; gap: 12px; margin-bottom: 32px; flex-direction: column; max-width: 400px; margin-left: auto; margin-right: auto;">
+          <input type="text" readonly value="https://tienda.com/ref/juanperez26" style="padding: 16px; border-radius: 12px; border: 1px solid var(--border-light); background: #fbfbfd; font-family: var(--font-mono); font-size: 14px; text-align: center; width: 100%; outline: none; cursor: pointer;" onclick="this.select()" id="referral-link-input">
+          <button class="btn btn-primary" id="invite-friend-btn" style="width: 100%;">Copiar Enlace</button>
         </div>
 
-        <div class="lb-table-container">
-          <table class="lb-table" id="leaderboard-table">
-            <thead>
-              <tr>
-                <th>Rango</th>
-                <th>Usuario</th>
-                <th>Referidos</th>
-                <th>Bono</th>
-              </tr>
-            </thead>
-            <tbody id="leaderboard-tbody">
-              <!-- Rows generated dynamically by app.js -->
-            </tbody>
-          </table>
+        <div style="border-top: 1px solid var(--border-light); padding-top: 24px;">
+          <div style="font-size: 14px; color: var(--text-muted); text-transform: uppercase; font-weight: 600; margin-bottom: 16px;">Tus Estadísticas</div>
+          <div style="display: flex; justify-content: space-around;">
+            <div>
+              <div style="font-size: 32px; font-weight: 700; color: #1d1d1f;" id="ref-count">4</div>
+              <div style="font-size: 14px; color: var(--text-muted);">Amigos Invitados</div>
+            </div>
+            <div>
+              <div style="font-size: 32px; font-weight: 700; color: #34c759;" id="ref-earned">$600</div>
+              <div style="font-size: 14px; color: var(--text-muted);">Crédito Ganado</div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div style="display: flex; justify-content: center; gap: 16px; margin: 40px 0;" class="fade-up">
-        <div style="background: var(--card-light); border: 1px solid var(--border-light); padding: 16px 24px; border-radius: 12px;">1-5 referidos: $10 c/u</div>
-        <div style="background: var(--card-light); border: 1px solid var(--border-light); padding: 16px 24px; border-radius: 12px;">6-15 referidos: $12 c/u</div>
-        <div style="background: var(--card-light); border: 1px solid var(--border-light); padding: 16px 24px; border-radius: 12px; border-color: var(--accent-blue); color: var(--accent-blue); font-weight: 600;">16+ referidos: $15 c/u</div>
-      </div>
-
-      <button id="invite-friend-btn" class="btn btn-primary fade-up">Invitar Amigo</button>
     </div>
   </section>
 
