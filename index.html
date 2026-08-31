@@ -10,16 +10,26 @@
 </head>
 <body>
   <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 0;">
-      <a href="#" style="font-size: 20px; font-weight: 700; color: inherit; text-decoration: none;">RewardShow</a>
-      <div class="nav-links" style="display: flex; gap: 24px;">
-        <a href="#dashboard" style="color: inherit; text-decoration: none; font-size: 14px;">Dashboard</a>
-        <a href="#ruleta" style="color: inherit; text-decoration: none; font-size: 14px;">Ruleta</a>
-        <a href="#cashback" style="color: inherit; text-decoration: none; font-size: 14px;">Cashback</a>
+  <nav class="navbar" id="main-nav">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">RewardShow</a>
+      <div class="nav-links">
+        <a href="#dashboard">Dashboard</a>
+        <a href="#ruleta">Ruleta</a>
+        <a href="#cashback">Cashback</a>
       </div>
+      <button class="menu-toggle" id="mobile-menu-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
     </div>
   </nav>
+
+  <!-- MOBILE MENU (Hidden by default) -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#dashboard">Dashboard</a>
+    <a href="#ruleta">Ruleta</a>
+    <a href="#cashback">Cashback</a>
+  </div>
 
   <!-- SECTION 1: HERO -->
   <section class="section section-dark hero-section">
@@ -28,7 +38,7 @@
       <h1 class="title-hero">Recompensas que<br>transforman tu experiencia.</h1>
       <p class="subtitle">12 formas únicas de premiar tu lealtad. Cada compra cuenta. Cada acción tiene valor.</p>
       
-      <div class="button-group">
+      <div class="button-group" style="margin-top: 40px; display: flex; gap: 16px; justify-content: center;">
         <a href="#dashboard" class="btn btn-primary">Explorar Programa</a>
         <a href="#ruleta" class="btn btn-link">Ver Demo &rarr;</a>
       </div>

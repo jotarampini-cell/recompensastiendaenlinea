@@ -223,21 +223,35 @@
   // 2. Navegación
   function initNavbar() {
     const nav = document.querySelector('.navbar');
+    const menuBtn = document.querySelector('#mobile-menu-btn');
+    const mobileMenu = document.querySelector('#mobile-menu');
+    
     if (!nav) return;
 
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
         nav.classList.add('scrolled');
-        nav.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
-        nav.style.backdropFilter = 'blur(10px)';
-        nav.style.boxShadow = '0 1px 0 rgba(0,0,0,0.05)';
+        nav.style.background = 'rgba(29, 29, 31, 0.85)';
+        nav.style.borderBottom = '1px solid rgba(255,255,255,0.15)';
       } else {
         nav.classList.remove('scrolled');
-        nav.style.backgroundColor = 'transparent';
-        nav.style.backdropFilter = 'none';
-        nav.style.boxShadow = 'none';
+        nav.style.background = 'rgba(29, 29, 31, 0.72)';
+        nav.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
       }
     }, { passive: true });
+    
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+      });
+      
+      // Close menu when clicking a link
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+        });
+      });
+    }
 
     // Smooth scroll para anclas
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
